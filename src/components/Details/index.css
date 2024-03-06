@@ -1,0 +1,14 @@
+.details_container{
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.details_image{
+  width: 50%;
+
+}
