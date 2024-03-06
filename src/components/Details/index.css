@@ -12,3 +12,11 @@
   width: 50%;
 
 }
+
+.details_moves{
+  max-width:300px;
+}
+
+.details_container span{
+  margin: 10px;
+}

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { createContext } from "react";
 import usePokemonApi from "./usePokemonApi";
+import usePokemonDetailApi from "./usePokemonDetailApi";
 
 const UPDATE_POKEMON = "update/pokemon";
 
@@ -40,13 +41,24 @@ export default function AppContextProvider({ children }) {
     pokemonData: { results: [] },
     pokemon: {},
   });
+
   const pokemonData = usePokemonApi();
+
+  const pokemonDetail = usePokemonDetailApi(state.pokemon.url);
+
   useEffect(() => {
     dispatch(updatePokemonData(pokemonData));
   }, [pokemonData]);
+
+  useEffect(() => {
+    dispatch(updatePokemon({ ...state.pokemon, ...pokemonDetail }));
+  }, [pokemonDetail]);
+
   return (
     <AppContext.Provider value={state}>
-      <AppContextDispatch.Provider>{children}</AppContextDispatch.Provider>
+      <AppContextDispatch.Provider value={dispatch}>
+        {children}
+      </AppContextDispatch.Provider>
     </AppContext.Provider>
   );
 }
