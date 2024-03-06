@@ -1,14 +1,19 @@
 import React from "react";
 import { useAppContext } from "../../context/AppContext";
+import { setImageUrl } from "../Home";
 import "./index.css";
 
 export default function Details() {
-  const { name } = useAppContext();
+  const { pokemon, imageUrl } = useAppContext();
   return (
     <div className="details_container">
-      <img src={name} alt="Pokemon image" className="details_image" />
+      <img
+        src={setImageUrl(pokemon.index, imageUrl)}
+        alt="Pokemon image"
+        className="details_image"
+      />
       <div>
-        <h1>charizard</h1>
+        <h1>{pokemon.name}</h1>
         <div>
           <h3>Abilities</h3>
           <span>fire</span>
